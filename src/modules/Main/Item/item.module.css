@@ -1,0 +1,38 @@
+.Item {
+    width: 100%;
+    text-align: left;
+    /* margin: 10px; */
+    background: white;
+    height: 80px;
+    padding: 30px; 
+    /* border: 1px solid black; */
+    box-sizing: border-box;
+}
+
+label {
+    /* margin-top: 20px; */
+    background: white;
+}
+
+.Item:hover, label:hover {
+    background: #f9f9f9;
+    cursor: pointer;
+}
+
+.itemCheck {
+    margin-right: 10px;
+}
+
+.delButton {
+    float: right;
+    background: white;
+    height: 30px;
+    width: 70px;
+    border-radius: 30px;
+    border: 1px solid #696969;
+}
+
+.delButton:hover {
+    background: #dcdcdc;
+    cursor: pointer;
+}

@@ -1,0 +1,35 @@
+.addContainer {
+    background: white;
+    height: 80px;
+    box-sizing: border-box;
+    /* border: 1px solid black; */
+    padding-top: 20px;
+    border-radius: 0 0 30px 30px;
+}
+
+.inputAdd, .addButton {
+    background: white;
+    height: 40px;
+}
+
+.inputAdd {
+    float: left;
+    margin-left: 30px;
+    width: 360px;
+    border-radius: 30px;
+    border: 1px solid #dcdcdc;
+    padding-left: 10px;
+}
+
+.addButton {
+    float: right;
+    margin-right: 30px;
+    border-radius: 30px;
+    border: 1px solid #696969;
+    width: 60px;
+}
+
+.addButton:hover {
+    background: #dcdcdc;
+    cursor: pointer;
+}
