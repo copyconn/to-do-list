@@ -1,5 +1,8 @@
 import React from "react";
-import classes from './item.module.css';
+import styled from "styled-components";
+import { Checkbox } from '@mantine/core';
+
+import { Button } from "../../Button";
 
 interface IItemProps {
     value: string;
@@ -9,21 +12,29 @@ interface IItemProps {
     deleteItem: (id: number) => void;
 }
 
-export function Item({value, active, id, chooseItem, deleteItem}: IItemProps) {
-
+export const Item = ({ value, active, id, chooseItem, deleteItem }: IItemProps) => {
     return (
-        <div className={classes.Item}>
-            <label>
-                <input 
-                    type="checkbox" 
-                    className={classes.itemCheck} 
-                    checked={active} 
-                    onChange={() => chooseItem(id)}
-                ></input>
-                {value}
-            </label>
+        <Container>
+            <Checkbox
+                label={value}
+                color="dark"
+                checked={active}
+                onChange={() => chooseItem(id)}
+            />
 
-            <button className={classes.delButton} onClick={() => deleteItem(id)}>Delete</button>
-        </div>
+            <Button label="Delete" action={() => deleteItem(id)}/>
+        </Container>
     )
 }
+
+const Container = styled.div`
+  height: 80px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 30px;
+
+  &&:hover {
+    background: #f9f9f9;
+  }
+`

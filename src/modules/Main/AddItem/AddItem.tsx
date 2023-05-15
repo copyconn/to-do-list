@@ -3,15 +3,15 @@ import { IItem } from "../../../App";
 import classes from './additem.module.css';
 
 interface IAddItemProps {
-    addItem: (val: string) => void; 
+    addItem: (val: string) => void;
 }
 
-export function AddItem({addItem}: IAddItemProps) {
+export const AddItem = ({ addItem }: IAddItemProps) => {
 
     const inputEl = useRef<HTMLInputElement | null>(null);
 
     const submit = () => {
-        if(inputEl.current?.value != '') {
+        if (inputEl.current?.value != '') {
             addItem(inputEl.current?.value)
             inputEl.current.value = '';
         } else {
@@ -21,9 +21,9 @@ export function AddItem({addItem}: IAddItemProps) {
 
     return (
         <div className={classes.addContainer}>
-            <input 
-                ref={inputEl} 
-                type="text" 
+            <input
+                ref={inputEl}
+                type="text"
                 placeholder="Add Todo..."
                 className={classes.inputAdd}
             ></input>

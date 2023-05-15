@@ -1,8 +1,9 @@
 import React from "react";
+import styled from "styled-components";
+
+import { Button } from "../Button";
+
 import { IItem } from "../../App";
-import { Actions } from "./Actions/Actions";
-import { AddItem } from "./AddItem/AddItem";
-import classes from './header.module.css';
 
 interface IHeaderProps {
     checkAll: () => void;
@@ -10,12 +11,12 @@ interface IHeaderProps {
     items: IItem[];
 }
 
-export function Header({checkAll, clearAll, items}: IHeaderProps) {
+export const Header = ({ checkAll, clearAll, items }: IHeaderProps) => {
 
     const inactiveItems = () => {
-        let inactiveCount:number = 0;
+        let inactiveCount: number = 0;
         items.forEach((item) => {
-            if(item.active == false) {
+            if (item.active == false) {
                 inactiveCount++;
             }
         })
@@ -23,17 +24,42 @@ export function Header({checkAll, clearAll, items}: IHeaderProps) {
     }
 
     return (
-        <div className={classes.Header}>
+        <Container>
+            <Counter>
+                <span>{items.length} Tasks</span>
+                <span>{inactiveItems()} Remain</span>
+            </Counter>
 
-            <div className={classes.tasksCount}>
-                <span className={classes.tasks}>{items.length} Tasks</span>
-            </div>
-            <div className={classes.remainCount}>
-                <span className={classes.remain}>{inactiveItems()} Remain</span>
-            </div>
-            
-            {/* <button onClick={checkAll}>Выбрать все</button>
-            <button onClick={clearAll}>Очистить</button> */}
-        </div>
+            <ButtonContainer>
+                <Button label='Check all' action={checkAll}/>
+                <Line/>
+                <Button label='Clear all' action={clearAll}/>
+            </ButtonContainer>
+        </Container>
     );
 }
+
+const Container = styled.div`
+  border-bottom: 1px solid #F8F8FF;
+`
+
+const Counter = styled.div`
+  font-size: 24px;
+  height: 100px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 20%;
+`
+
+const ButtonContainer = styled.div`
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  margin-bottom: 10px;
+`
+
+const Line = styled.div`
+  height: 30px;
+  border: 1px solid #F8F8FF;
+`
